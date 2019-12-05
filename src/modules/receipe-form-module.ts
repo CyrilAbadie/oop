@@ -13,11 +13,9 @@ export class ReceipeFormModule{
     private toggleIngredientForm(event: any): void {
         if ($('#ingredient-form').hasClass('hidden-form')) {
             //Have to remove the hidden-form
-            $('#ingredient-form').removeClass('hidden-form');
-        } else {
-            //Have to add the hidden-form class
-            $('#ingredient-form').addClass('hidden-form');
-        }
+            $('#ingredient-form').removeClass('hidden-form').addClass('animated heartBeat');
+            
+        } 
     }
 }
 
