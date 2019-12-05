@@ -1,0 +1,133 @@
+<!doctype html> 
+<html><!--Balise racine du document HTML -->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Receipe rentability</title>
+
+        <!-- Stylesheets-->
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+
+    <body>
+            <div class="container">
+            <header class="row">
+            <h1 class="col-12">Receipe rentability</h1> 
+            </header>
+            
+            <main class="row">
+                <section id="receipe-forms" class="col-lg-4 col-12">
+                    <!-- First : receipe creation form-->             
+                    <form>
+                        <fieldset>
+                            <div class="form-group">
+                                <input 
+                                    type="text"
+                                    name="receipe-title"
+                                    id="receipe-title"
+                                    placeholder="Receipe title..."
+                                    class="form-control"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <input 
+                                    type="number"
+                                    name="receipe-quantity"
+                                    id="receipe-quantity"
+                                    value="1"
+                                    min="0"
+                                    max="50"
+                                    step="5"
+                                    placeholder="Receipe quantity..."
+                                    class="form-control"
+                                >                            
+                            </div>
+                            <div class="button-group float-right">
+                                <button 
+                                    type="button" 
+                                    name="create-receipe"
+                                    id="create-receipe"
+                                    disabled
+                                    class="btn btn-outline-success"
+                                    
+                                >
+                                    Créer
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>   
+                </section>
+                <aside id="receipe-results">
+                    <!-- Results of the receipe -->
+                    <table class="table table-condensed table-striped"> <!-- c'est un tableau -->
+                        <thead> <!-- header of the table -->
+                            <tr> <!-- Table Row, c'est une ligne de tableau-->
+                                <th class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="select-all-ingredients" id="select-all">
+                                </th> <!-- Header cell, les cellules d'en tête-->
+                                <th>Ingredients</th>
+                                <th>Quantité</th>
+                                <th>Coût unitaire (&euro;)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody> <!-- Rows of the table -->
+                            <tr>
+                                <td class="form-check"> <!-- Table divider-->
+                                    <input class="form-check-input" type="checkbox" name="select-farine" id="select-farine">
+                                </td>
+                                <td>Farine</td>
+                                <td>300 g</td>
+                                <td>0.54 &euro;</td>
+                            </tr>
+                            <tr>
+                                    <td class="form-check"> <!-- Table divider-->
+                                        <input class="form-check-input" type="checkbox" name="select-farine" id="select-farine">
+                                    </td>
+                                    <td>Lait</td>
+                                    <td>60 cl</td>
+                                    <td>0.94 &euro;</td>
+                                </tr>
+                                <tr>
+                                        <td class="form-check"> <!-- Table divider-->
+                                            <input class="form-check-input" type="checkbox" name="select-farine" id="select-farine">
+                                        </td>
+                                        <td>Oeufs</td>
+                                        <td>3 unités</td>
+                                        <td>0.22 &euro;</td>
+                                    </tr>
+                        </tbody>
+                        <tfoot> <!-- Footer of the table-->
+                            <tr>
+                                <td colspan="3">
+                                    Total cost :
+                                </td>
+                                <td class="total-receipe">
+                                    99,99€
+                                </td>                                
+                            </tr>
+                            <td colspan="3">
+                                    Cost for a piece of receipe :
+                                </td>
+                                <td class="total-receipe">
+                                    99,99€
+                                </td>
+
+                            <tr>                                
+                            </tr>
+                        </tfoot>
+                    </table>
+                </aside>
+            </main>
+            
+            <footer class="row">
+                <ul class="list-unstyled"><!-- Conteneur de ligned de liste-->
+                    <li>Mentions légales</li>
+                    <li>CGU</li>
+                    <li>&copy; Aélion 2019</li>
+                </ul>
+            </footer>
+        </div>
+    </body>
+</html>

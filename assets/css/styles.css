@@ -1,0 +1,17 @@
+/**
+* @name styles.css
+* @author Aélion - Déc 2019 - cyrilabadie@yahoo.com
+* @version 1.0.0
+**/
+
+#receipe-results table.table thead th {
+    border-bottom: none;
+}
+
+#receipe-results table.table tfoot td[colspan="3"] {
+    text-align : right;
+}
+#receipe-results table.table tfoot td.total-receipe {
+    font-weight: bold;
+    color : var(--gray);
+}
