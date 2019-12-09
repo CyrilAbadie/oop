@@ -4,7 +4,7 @@ import { IngredientFormModule } from './modules/ingredient-form-module';
 
 /**
  * @name Main
- * @author Aélion - Déc. 2019 - cyrilabdie@yahoo.com
+ * @author Aélion - Déc. 2019 - jla.webprojet@gmail.com
  * @package
  * @version 1.1.0
  */
@@ -15,9 +15,9 @@ export class Main {
     }
 }
 
-//App bootstraping with jQuery
-//Create a new instance of the Main class
+// App bootstraping with jQuery
+// Create a new instance of the Main class
 // after the document was completely loaded
 $(document).ready(() => {
-    const app: Main = new Main();
+   const app: Main = new Main(); 
 });
