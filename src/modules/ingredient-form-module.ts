@@ -1,5 +1,6 @@
 import * as $ from 'jquery';
 import { ReceipeFormModule } from './receipe-form-module';
+import { QuantityProduct } from './../models/quantity-product';
 
 export class IngredientFormModule {
 
@@ -9,6 +10,8 @@ export class IngredientFormModule {
 
     private addAndContinue: JQuery = $('#add-and-next');
     private addAndStop: JQuery = $('#add-and-close');
+
+    private checkAll: JQuery =$('#select-all');
 
     
     public constructor() {
@@ -35,9 +38,32 @@ export class IngredientFormModule {
             'click',
             (event: any): void => this.addIngredientAndStop(event)
         );
+
+        this.checkAll.on(
+            'click',
+            (event: any): void => this.checkAllCheckbox(event)
+        );
+
+        $('tbody').on(
+            'click',
+            '.ingredient-selection',
+            (event:any) => this.manageSelectAllCheckboxes(event)
+        )
+    }
+    private manageSelectAllCheckboxes(event: any): any {
+       if (
+           $('tbody .ingredient-selection:checked').length == $('tbody tr').length){
+               this.checkAll.prop('checked' , true)
+           }
+           else {
+               this.checkAll.prop('checked', false)
+           }
+           
     }
 
+
     private addIngredientAndStop(event: any): void {
+        this.addRow();
         // Reset form...
         this.resetForm();
 
@@ -45,6 +71,7 @@ export class IngredientFormModule {
         // Sure not Hobiwan...
         this.form.children('fieldset').children('legend').children('span').html('');
 
+       
 
         this.form
             .removeClass('fadeInUp')
@@ -62,6 +89,8 @@ export class IngredientFormModule {
     }
     
     private addIngredient(event: any): void {
+        //Add a row in the table
+        this.addRow();
         // Reset form too...
         this.resetForm();
     }
@@ -107,6 +136,83 @@ export class IngredientFormModule {
         } else {
             $('[addIngredientButton]').attr('disabled', 'disabled');
         }
+    }
+
+    private addRow(): void {
+        const ingredient: QuantityProduct = this.createObject();
+
+        const tableRow: JQuery = $('<tr>'); // Add an HTML Element in DOM
+
+        const checkboxCell: JQuery = $('<td>');
+        // Create a checkbox and add to the cell
+        const checkbox: JQuery = $('<input>');
+        checkbox.attr('type','checkbox');
+        checkbox.addClass('ingredient-selection');
+        let tableLength: number = $('aside#receipe-results table tbody tr').length + 1;
+        console.log(`Next checkbox id: ${tableLength}`);
+        checkbox.attr('id', 'ingredient-' + tableLength);
+        checkboxCell.append(checkbox);    
+        
+        
+
+        const ingredientTitleCell: JQuery = $('<td>');
+        ingredientTitleCell.html(ingredient.getName());
+
+        const ingredientQuantityCell: JQuery = $('<td>');
+        if(ingredient.getUnit() == 'unité') {
+            ingredientQuantityCell.html(ingredient.getQuantity().toString());}
+            else {
+                ingredientQuantityCell.html(ingredient.getQuantity() + ' ' + ingredient.getUnit());
+             }
+        
+        const unitPriceCell: JQuery =$('<td>');
+        unitPriceCell.html(ingredient.getUnitPrice().toString());
+        
+
+
+        //Add cells to row
+        tableRow
+            .append(checkboxCell)
+            .append(ingredientTitleCell)
+            .append(ingredientQuantityCell)
+            .append(unitPriceCell);
+
+        //Add row to tbody
+        $('aside#receipe-results table tbody').append(tableRow);
+    }
+
+    private createObject(): QuantityProduct {
+        const ingredient: QuantityProduct = new QuantityProduct();
+
+        ingredient.setName($('#ingredient-title').val().toString());
+        ingredient.setBaseUnit($('#base-unit').children('option:selected').val().toString());
+        ingredient.setPrice(parseFloat($('#ingredient-price').val().toString()));
+        ingredient.setQuantity(parseInt($('#ingredient-quantity').val().toString()));
+        ingredient.setUnit($('#target-unit').children('option:selected').val().toString());
+        ingredient.setQuantityUnit(parseInt($('#unit-quantity').val().toString()));
+        
+
+        //Compute the unit price...
+        ingredient.setUnitPrice();
+
+
+        return ingredient;
+
+    }
+
+    private checkAllCheckbox(event: any): void {
+        console.log('Check or uncheck');
+        if ($('tbody tr').length == 0) {
+            this.checkAll.prop('checked', false);
+
+        }   else {    
+        if(this.checkAll.is(":checked")){
+        
+        $('tbody .ingredient-selection').prop('checked', true);
+     } else {         
+         $('tbody .ingredient-selection').prop('checked', false);
+     }
+    }
     }
 
     private getFormFields(): void {

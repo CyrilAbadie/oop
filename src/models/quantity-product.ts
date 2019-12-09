@@ -38,8 +38,15 @@ export class QuantityProduct extends ProductModel { // extends marque l'héritag
         this.quantity = quantity;
     }
     
+    public getQuantity(): number{
+        return this.quantity
+    }
+    
     public setUnit(unit: string): void {
         this.unit = unit;
+    }
+    public getUnit(): string{
+        return this.unit;
     }
 
     public setUnitPrice(): void {
