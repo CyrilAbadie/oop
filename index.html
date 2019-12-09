@@ -44,7 +44,7 @@
                     <fieldset>
                         <div class="row float-right">
                             <div class="col">
-                                <button type="button" name="create-receipe" id="create-receipe"
+                                <button type="button" name="create-receipe" id="create-receipe" disabled
                                     class="btn btn-outline-success">
                                     Créer
                                 </button>
@@ -55,8 +55,10 @@
 
                 <!-- Ingredient form-->
                 <form id="ingredient-form" class="hidden-form">
-
                     <fieldset>
+                        <legend>
+                            PLease, enter ingredients for <span></span>
+                        </legend>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col">
@@ -74,7 +76,7 @@
                                 <div class="col">
                                     <!-- Popup -->
                                     <select class="form-control" name="target-unit" id="target-unit" size="1">
-                                        <option value="" disabled selected>Select...</option>
+                                        <option value="" disabled selected > Select...</option>
                                         <option value="g">Grammes</option>
                                         <option value="cL">Centilitres</option>
                                         <option value="unite">Units</option>
@@ -83,54 +85,50 @@
                             </div>
                         </div>
                     </fieldset>
-                    <form id="ingredient-price">
-                        <fieldset>
-                            <div class="input-group mb-3">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col input-group">
-
-
-                                            <input type="number" class="form-control" placeholder="ingredient-price"
-                                                aria-label="ingredient-price" aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="basic-addon2">&euro;</span>
-                                            </div>
-                                            <div class="col">
-                                                <select class="form-control" name="base-unit" id="base-unit" size="1">
-                                                    <option value="" disabled selected>For...</option>
-                                                    <option value="kg">Kilogrammes</option>
-                                                    <option value="L">Litres</option>
-                                                    <option value="cL">Centilitres</option>
-                                                    <option value="unite">Units</option>
-                                                </select>
-                                            </div>
+                    <fieldset>
+                        <div class="input-group mb-3">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col input-group">
+                                        <input type="number" class="form-control" id="ingredient-price"
+                                            placeholder="ingredient-price" aria-label="ingredient-price"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">&euro;</span>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control" name="base-unit" id="base-unit" size="1">
+                                                <option value="" disabled selected>For...</option>
+                                                <option value="kg">Kilogrammes</option>
+                                                <option value="L">Litres</option>
+                                                <option value="cL">Centilitres</option>
+                                                <option value="unite">Units</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row float-right">
-                                    <div class="col-md-12 offset-md-8">
-                                        <label for="unit-quantity">Given quantity :</label>
-                                        <input type="number" name="unit-quantity" id="unit-quantity" min="1" value="1"
-                                            class="form-control">
-                                    </div>
+                            </div>
+                            <div class="row float-right">
+                                <div class="col-md-12 offset-md-8">
+                                    <label for="unit-quantity">Given quantity :</label>
+                                    <input type="number" name="unit-quantity" id="unit-quantity" min="1" value="1"
+                                        class="form-control">
                                 </div>
                             </div>
-                            <div class="button-group float-left">
-                                <button type="button" name="Add and Continue" id="Add and Continue" disabled
-                                    class="btn btn-outline-success">
-                                    Add and Continue
-                                </button>
-                            </div>
-                            <div class="button-group float-right">
-                                <button type="button" name="Add and Close" id="Add and Close" disabled
-                                    class="btn btn-outline-success">
-                                    Add and Close
-                                </button>
-                            </div>
-                        </fieldset>
-                    </form>
-
+                        </div>
+                        <div class="button-group float-left">
+                            <button type="button" name="Add-and-Continue" id="Add-and-Continue" disabled
+                                class="btn btn-outline-success">
+                                Add and Continue
+                            </button>
+                        </div>
+                        <div class="button-group float-right">
+                            <button type="button" name="Add-and-Close" id="Add-and-Close" disabled
+                                class="btn btn-outline-success">
+                                Add and Close
+                            </button>
+                        </div>
+                    </fieldset>
                 </form>
             </section>
             <aside id="receipe-results" class="col-lg-8 col-12">
@@ -150,7 +148,6 @@
                             <th>Coût unitaire (&euro;)</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <!-- Rows of the table -->
                         <tr>
@@ -197,14 +194,12 @@
                         <td class="total-receipe">
                             99,99€
                         </td>
-
                         <tr>
                         </tr>
                     </tfoot>
                 </table>
             </aside>
         </main>
-
         <footer class="row">
             <ul class="list-unstyled">
                 <!-- Conteneur de lignes de liste-->
@@ -239,7 +234,5 @@
             </ul>
         </footer>
     </div>
-
 </body>
-
 </html>
