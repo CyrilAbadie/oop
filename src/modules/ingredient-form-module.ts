@@ -80,7 +80,8 @@ export class IngredientFormModule {
         // Sure not Hobiwan...
         this.form.children('fieldset').children('legend').children('span').html('');
 
-       
+       //Call the ModalModule to open up the modal
+       $('.outer-modal').removeClass('hidden');
 
         this.form
             .removeClass('fadeInUp')
