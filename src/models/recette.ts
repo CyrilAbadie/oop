@@ -15,7 +15,7 @@ export class Recette{
     private receipePrice: number =0
 
     public getReceipePrice(): number{
-        return this.receipePrice
+        return this.price
     }
     public getUnitPrice(): number {
         return this.unitPrice
@@ -28,6 +28,7 @@ export class Recette{
         this.price = Math.round((this.price + product.getUnitPrice())*1000)/1000;
         
         this.ingredients.push(product);
+        this.unitPrice=this.price/this.quantity;
     }
     
 
