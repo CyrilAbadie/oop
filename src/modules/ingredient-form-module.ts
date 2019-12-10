@@ -2,6 +2,7 @@ import * as $ from 'jquery';
 import { ReceipeFormModule } from './receipe-form-module';
 import { QuantityProduct } from './../models/quantity-product';
 import { ModalModule } from './modal-module';
+import { Recette } from '../models/recette';
 
 export class IngredientFormModule {
 
@@ -22,9 +23,7 @@ export class IngredientFormModule {
     
     public constructor(receipe : ReceipeFormModule) {
         this.form = $('#ingredient-form');
-        this.receipe = receipe; //Retrieve DI
-
-    
+        this.receipe = receipe; //Retrieve DI  
 
 
         this.getFormFields();
@@ -35,6 +34,10 @@ export class IngredientFormModule {
     }
     public getReceipeTitle(): string {
         return this.receipe.getRecette().getTitle();
+    }
+
+    public getReceipe(): Recette {
+        return this.receipe.getRecette();
     }
     
     private setEventHandlers() {

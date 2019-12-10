@@ -25,7 +25,7 @@ export class ModalModule {
     }
 
     private setEventHandlers() : void {
-       $('div.footer button.btn-primary').on(
+       $('div.footer button.btn-success').on(
             'click',
             (event: any): void => this.yesButton(event)
        );
@@ -36,11 +36,31 @@ export class ModalModule {
     }
 
     private noButton(event: any): void {
-        console.log('Click on No button');
+      
+        this.hide();
     }
 
     private yesButton(event: any): void {
-        console.log('Click on Yes button');
+        //on veut enregistrer la recette quand ca clique sur le oui
+        const receipes: any = localStorage.getItem('receipes');
+        if (receipes != null) {
+            // receipes key in localStorage exists
+            const existingReceipes: Array<any> = JSON.parse(receipes);
+            existingReceipes.push(this.form.getReceipe());
+            localStorage.setItem('receipes', JSON.stringify(existingReceipes));
+        } else {
+            const updatedReceipes: Array<any> = [
+                this.form.getReceipe()
+            ];
+            localStorage.setItem('receipes', JSON.stringify(updatedReceipes));
+        }
+
+        //Clear tr in the table...
+
+        $('#receipe-results table tbody tr').remove();
+        
+        this.hide();
+    
     }
 
 }
