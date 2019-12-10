@@ -23,6 +23,8 @@ export class IngredientFormModule {
         this.form = $('#ingredient-form');
         this.receipe = receipe; //Retrieve DI
 
+    
+
 
         this.getFormFields();
 
@@ -30,6 +32,8 @@ export class IngredientFormModule {
         this.setEventHandlers();
 
     }
+
+
 
     
     private setEventHandlers() {
@@ -81,6 +85,7 @@ export class IngredientFormModule {
         this.form.children('fieldset').children('legend').children('span').html('');
 
        //Call the ModalModule to open up the modal
+       $('.outer-modal .content strong').html(this.receipe.getRecette().getTitle());
        $('.outer-modal').removeClass('hidden');
 
         this.form

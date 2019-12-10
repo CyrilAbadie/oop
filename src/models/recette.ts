@@ -8,6 +8,7 @@ export class Recette{
 
     public constructor (title : string) {
         this.title= title;
+        
     }
     private price : number =0
     private unitPrice : number =0
@@ -20,6 +21,9 @@ export class Recette{
     public getUnitPrice(): number {
         return this.unitPrice
     }
+    public getTitle(): string {
+        return this.title
+    }
 
 
     public addProduct(product : QuantityProduct): void{
@@ -28,7 +32,7 @@ export class Recette{
         this.price = Math.round((this.price + product.getUnitPrice())*1000)/1000;
         
         this.ingredients.push(product);
-        this.unitPrice=this.price/this.quantity;
+        this.unitPrice=Math.round((this.price/this.quantity)*1000)/1000;
     }
     
 
