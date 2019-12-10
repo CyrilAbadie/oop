@@ -48,6 +48,7 @@ export class QuantityProduct extends ProductModel { // extends marque l'héritag
     public getUnit(): string{
         return this.unit;
     }
+    
 
     public setUnitPrice(): void {
         const convertedQuantity: number = ConvertHelper.weight(this.baseUnit,this.unit,this.quantity);

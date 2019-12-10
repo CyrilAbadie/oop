@@ -1,9 +1,15 @@
 import * as $ from 'jquery';
+import { Recette } from '../models/recette';
 
 export class ReceipeFormModule {
     public constructor() {
         this.setCreateButtonHandler();
         this.setFormKeyupHandler();
+    }
+    private recette : Recette
+
+    public getRecette(): Recette {
+        return this.recette;
     }
 
     private setCreateButtonHandler(): void {
@@ -48,6 +54,9 @@ export class ReceipeFormModule {
             $('#ingredient-form')
                 .addClass('animated')
                 .addClass('fadeInUp');
+                //Make an instance of recette
+            this.recette = new Recette($('#receipe-title').val().toString());
+            this.recette.setQuantity(parseInt($('#receipe-quantity').val().toString()))
             // "Disable" the form components : fields and button
             $('#create-receipe').attr('disabled', 'disabled');
             $('#receipe-title').attr('disabled', 'disabled');
@@ -55,5 +64,5 @@ export class ReceipeFormModule {
         }
     }
 
-
+  
 }

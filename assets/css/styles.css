@@ -31,3 +31,15 @@ form.hidden-form{
     -webkit-appearence: none;
     margin: 0;
 } 
+
+/**
+*Modal Box
+**/
+div.outer-modal {
+    position: absolute;
+    top: 0; /** Top at the top of browser window **/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, .6); 
+}

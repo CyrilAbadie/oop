@@ -12,9 +12,17 @@ export class IngredientFormModule {
     private addAndStop: JQuery = $('#add-and-close');
 
     private checkAll: JQuery =$('#select-all');
+    private receipe : ReceipeFormModule;
+
+    //Dependancy injection ; Ungredients depends on Receipe
+
+
 
     
-    public constructor() {
+    public constructor(receipe : ReceipeFormModule) {
+        this.form = $('#ingredient-form');
+        this.receipe = receipe; //Retrieve DI
+
 
         this.getFormFields();
 
@@ -22,6 +30,7 @@ export class IngredientFormModule {
         this.setEventHandlers();
 
     }
+
     
     private setEventHandlers() {
         this.form.on(
@@ -179,6 +188,10 @@ export class IngredientFormModule {
 
         //Add row to tbody
         $('aside#receipe-results table tbody').append(tableRow);
+
+        //Update totals...
+        $('#receipe-total').html(this.receipe.getRecette().getReceipePrice().toString());
+        $('#one-piece-total').html(this.receipe.getRecette().getUnitPrice().toString());
     }
 
     private createObject(): QuantityProduct {
@@ -190,6 +203,12 @@ export class IngredientFormModule {
         ingredient.setQuantity(parseInt($('#ingredient-quantity').val().toString()));
         ingredient.setUnit($('#target-unit').children('option:selected').val().toString());
         ingredient.setQuantityUnit(parseInt($('#unit-quantity').val().toString()));
+
+        //Add ingredient to the receipe
+
+        this.receipe.getRecette().addProduct(ingredient);
+        console.log('Receipe updated : ' + JSON.stringify(this.receipe.getRecette()));
+
         
 
         //Compute the unit price...
