@@ -33,9 +33,9 @@ export class IngredientFormModule {
         this.setEventHandlers();
 
     }
-
-
-
+    public getReceipeTitle(): string {
+        return this.receipe.getRecette().getTitle();
+    }
     
     private setEventHandlers() {
         this.form.on(
@@ -81,7 +81,7 @@ export class IngredientFormModule {
 
         const modalModule: ModalModule = (new ModalModule(this));
         modalModule.show();
-        
+
         
         // Reset form...
         this.resetForm();
