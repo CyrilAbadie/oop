@@ -1,6 +1,7 @@
 import * as $ from 'jquery';
 import { ReceipeFormModule } from './receipe-form-module';
 import { QuantityProduct } from './../models/quantity-product';
+import { ModalModule } from './modal-module';
 
 export class IngredientFormModule {
 
@@ -77,6 +78,11 @@ export class IngredientFormModule {
 
     private addIngredientAndStop(event: any): void {
         this.addRow();
+
+        const modalModule: ModalModule = (new ModalModule(this));
+        modalModule.show();
+        
+        
         // Reset form...
         this.resetForm();
 
@@ -84,9 +90,7 @@ export class IngredientFormModule {
         // Sure not Hobiwan...
         this.form.children('fieldset').children('legend').children('span').html('');
 
-       //Call the ModalModule to open up the modal
-       $('.outer-modal .content strong').html(this.receipe.getRecette().getTitle());
-       $('.outer-modal').removeClass('hidden');
+
 
         this.form
             .removeClass('fadeInUp')
