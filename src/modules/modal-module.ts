@@ -36,6 +36,9 @@ export class ModalModule {
     }
 
     private noButton(event: any): void {
+        //Clear tr in the table...
+        $('#receipe-results table tbody tr').remove();
+        $('.total-receipe').html('0.00');
       
         this.hide();
     }
@@ -58,7 +61,8 @@ export class ModalModule {
         //Clear tr in the table...
 
         $('#receipe-results table tbody tr').remove();
-        
+        $('.total-receipe').html('0€');
+
         this.hide();
     
     }
